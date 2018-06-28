@@ -24,11 +24,14 @@ const rootReducer = (state = initialState, action) => {
 
 //Store
 const store = createStore(rootReducer);
-console.log(store.getState());
+
+//Subscribe
+store.subscribe(() => {
+    console.log('[Subscribe]', store.getState());
+})
 
 //Dispatcher
 store.dispatch({type: 'INC_COUNTER'});
-console.log(store.getState());
 store.dispatch({type: 'ADD_COUNTER', value: 10}); //Make sure you don't change 'type' with any other variable or name, but value can be named differently
-console.log(store.getState());
+
 
