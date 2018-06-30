@@ -1,8 +1,7 @@
-import * as actionTypes from './actions'
+import * as actionTypes from '../actions'
 
 const intialState = {
-    counter : 0,
-    result : []
+    counter : 0
 }
 
 const reducer = (state = intialState, action) => {
@@ -26,20 +25,6 @@ const reducer = (state = intialState, action) => {
         return{
             ...state,
             counter: state.counter - action.val
-        }
-        case actionTypes.STORE_RESULT:
-        return {
-            ...state,
-            result: state.result.concat({id: new Date(), val: state.counter})
-        }
-        case actionTypes.DELETE_RESULT:
-        //by using filter function, the result (here rs) and index are being taken
-        //then the index is compared to id, if it meets the condition, filter
-        //function returns true
-        const updatedArray = state.result.filter(rs => rs.id !== action.resultId)
-        return {
-            ...state,
-            result : updatedArray
         }
     }
     return state;
